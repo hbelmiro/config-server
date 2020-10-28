@@ -1,7 +1,7 @@
 # config-server
 
 This project is a configuration server. It stores the configurations so that they can be read 
-through a restful API.
+through a RESTful API.
 
 ```shell script
 curl http://localhost:8080/configurations/pool_size
