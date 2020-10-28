@@ -1,6 +1,6 @@
 # config-server
 
-This project is a configuration server. It stores the settings so that they can be read 
+This project is a configuration server. It stores the configurations so that they can be read 
 through a restful API.
 
 ```shell script
