@@ -12,6 +12,7 @@ public class Configuration extends PanacheMongoEntityBase {
 
     private String value;
 
+    @SuppressWarnings("unused")
     public Configuration() {
     }
 
@@ -20,18 +21,22 @@ public class Configuration extends PanacheMongoEntityBase {
         this.value = value;
     }
 
+    @SuppressWarnings("unused")
     public String getId() {
         return id;
     }
 
+    @SuppressWarnings("unused")
     public void setId(String id) {
         this.id = id;
     }
 
+    @SuppressWarnings("unused")
     public String getValue() {
         return value;
     }
 
+    @SuppressWarnings("unused")
     public void setValue(String value) {
         this.value = value;
     }

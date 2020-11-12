@@ -1,16 +1,14 @@
 package com.hbelmiro.configserver;
 
 import com.hbelmiro.configserver.model.Configuration;
+import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.MongoDBContainer;
 
 import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.core.Response;
-
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -19,23 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @QuarkusTest
+@QuarkusTestResource(MongoDBTestResource.class)
 public class ConfigurationResourceTest {
-
-    private static final MongoDBContainer MONGO_DB_CONTAINER =
-            new MongoDBContainer("mongo:4.2").withExposedPorts(27017);
-
-    static {
-        MONGO_DB_CONTAINER.start();
-        System.setProperty("quarkus.mongodb.connection-string",
-                "mongodb://" + MONGO_DB_CONTAINER.getContainerIpAddress() + ":" + MONGO_DB_CONTAINER.getFirstMappedPort());
-    }
-
-    @AfterAll
-    static void tearDownAll() {
-        if (!MONGO_DB_CONTAINER.isShouldBeReused()) {
-            MONGO_DB_CONTAINER.stop();
-        }
-    }
 
     @BeforeEach
     void setUpEach() {
